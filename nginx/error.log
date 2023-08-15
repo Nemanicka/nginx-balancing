@@ -1,0 +1,6 @@
+2023/08/12 17:48:15 [emerg] 1#0: unexpected ";" in /usr/local/nginx/conf/nginx.conf:17
+2023/08/12 17:48:15 [emerg] 1#0: unexpected ";" in /usr/local/nginx/conf/nginx.conf:17
+2023/08/12 17:48:15 [emerg] 1#0: unexpected ";" in /usr/local/nginx/conf/nginx.conf:17
+2023/08/12 17:48:16 [emerg] 1#0: unexpected ";" in /usr/local/nginx/conf/nginx.conf:17
+2023/08/15 21:52:14 [emerg] 1#0: MMDB_open("/var/lib/Country.mmdb") failed - Error opening the specified MaxMind DB file in /usr/local/nginx/conf/nginx.conf:20
+2023/08/15 21:52:21 [emerg] 1#0: MMDB_open("/var/lib/Country.mmdb") failed - Error opening the specified MaxMind DB file in /usr/local/nginx/conf/nginx.conf:20

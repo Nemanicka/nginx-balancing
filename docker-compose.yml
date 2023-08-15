@@ -1,0 +1,71 @@
+version: '3.6'
+services:
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: ngrok
+    volumes:
+      - ./ngrok.yml:/etc/ngrok.yml:ro
+    command:
+      - "start"
+      - "--all"
+      - "--config"
+      - "/etc/ngrok.yml"
+    ports:
+      - '127.0.0.1:4040:4040'
+    network_mode: "host"
+
+  balancer:
+   image: nemanicka/nginx-geoip-upstream-healthchecks:latest
+   container_name: balancer
+   volumes:
+     - ./nginx/Country.mmdb:/var/lib/Country.mmdb
+     - ./nginx/error.log:/usr/local/nginx/logs/error.log
+     - ./nginx/conf/mime.types:/etc/nginx/mime.types:ro
+     - ./nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf:ro
+   ports:
+     - '127.0.0.1:8000:8000'
+   network_mode: "host"
+
+  node-1:
+   image: emcniece/nginx-cache-purge
+   container_name: node-1
+   volumes:
+     - ./nginx-1/conf/:/etc/nginx/conf.d:ro
+     - ./nginx-1/www/:/static/:ro
+     - ./nginx-1/cache/:/var/cache/dummycache:rw
+   ports:
+     - '9000:9000'
+   network_mode: "host"
+
+  node-2:
+   image: emcniece/nginx-cache-purge
+   container_name: node-2
+   volumes:
+     - ./nginx-2/conf/:/etc/nginx/conf.d:ro
+     - ./nginx-2/www/:/static/:ro
+     - ./nginx-2/cache/:/var/cache/dummycache:rw
+   ports:
+     - '9001:9001'
+   network_mode: "host"
+
+  node-3:
+   image: emcniece/nginx-cache-purge
+   container_name: node-3
+   volumes:
+     - ./nginx-3/conf/:/etc/nginx/conf.d:ro
+     - ./nginx-3/www/:/static/:ro
+     - ./nginx-3/cache/:/var/cache/dummycache:rw
+   ports:
+     - '9002:9002'
+   network_mode: "host"
+
+  node-4:
+   image: emcniece/nginx-cache-purge
+   container_name: node-4
+   volumes:
+     - ./nginx-4/conf/:/etc/nginx/conf.d:ro
+     - ./nginx-4/www/:/static/:ro
+     - ./nginx-4/cache/:/var/cache/dummycache:rw
+   ports:
+     - '9003:9003'
+   network_mode: "host"

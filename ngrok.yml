@@ -1,0 +1,12 @@
+version: 2
+authtoken: 2UAVhMTAB42agv4xoo8711cyK0N_2Ygf8S8MBqfVeU8Y1AhC4
+region: us
+
+tunnels:
+  t-us:
+    proto: http
+    #region: us             l
+    inspect: false         
+    #bind_tls: false        
+    host_header: us.local 
+    addr: 127.0.0.1:8000             
