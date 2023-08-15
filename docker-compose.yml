@@ -18,9 +18,9 @@ services:
    image: nemanicka/nginx-geoip-upstream-healthchecks:latest
    container_name: balancer
    volumes:
+     - ./nginx/conf/mime.types:/etc/nginx/mime.types:ro
      - ./nginx/Country.mmdb:/var/lib/Country.mmdb
      - ./nginx/error.log:/usr/local/nginx/logs/error.log
-     - ./nginx/conf/mime.types:/etc/nginx/mime.types:ro
      - ./nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf:ro
    ports:
      - '127.0.0.1:8000:8000'
